@@ -3,6 +3,8 @@
 % Check stroop data file - Waldo_Stroop_Data 
 % neutral/baseline condition added 
 % Comment: PSC -> need to be determined/modified after piloting 
+        % EXPERIMENT CODE FILE 
+        
 clear all; close all;
 
 %% --- basic settings 
