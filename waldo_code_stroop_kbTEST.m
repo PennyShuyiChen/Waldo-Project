@@ -20,7 +20,7 @@ keysetting      = -1; % -1 to query all keyboard devices
 
 %% save file parameters
  
-subject_id = 'St00'; % ID length < 8 Char; St00 as the pilot of Penny 
+subject_id = 'St2'; % ID length < 8 Char; St00 as the pilot of Penny 
  
 data_file_name = strcat(subject_id,'_waldo_data.mat');
 edfFile = strcat(subject_id,'.edf');
@@ -100,7 +100,7 @@ g_pattern = [1 5]; % PSC 1-> L; 5->R;
 nFaces = 9; % -> nfaces -> change after testing PSC 
  
 % conditions and trials
-nrepeat = 1; % PSC -> even number   
+nrepeat = 50; % PSC -> even number   
  
 % make emat ->PSC add local direction 
 emat = expmat(congruence, g_pattern);
