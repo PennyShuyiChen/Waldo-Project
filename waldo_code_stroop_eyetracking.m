@@ -57,6 +57,7 @@ Screen('Preference', 'SkipSyncTests', 1);
 oldVisualDebugLevel = Screen('Preference', 'VisualDebugLevel', 3);
 oldSupressAllWarnings = Screen('Preference', 'SuppressAllWarnings', 1);
  
+
 % linearize
 if plinearize
     screen_clut = [linspace(0,1,256)' linspace(0,1,256)' linspace(0,1,256)'];
