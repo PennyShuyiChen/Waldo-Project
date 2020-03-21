@@ -56,6 +56,7 @@ for whichcong = congruence
         % select only the correct trials
         tempdata2 = tempdata1(tempdata1(:,id_correct)==1,:);
         
+        % tempSD: calculated based on all RTs for all conditions 
         meandata = mean(tempdata2);
         SDdata = std(tempdata2);
         
@@ -70,9 +71,11 @@ for whichcong = congruence
         
         % recalculate the mean 
         meandata_removed = mean(tempdata3);
-        
+        std_removed = std(tempdata3);
+  
         % save
         meanRT(1,q) = meandata_removed(1,id_RT);
+        std_RT(1,q) = std_removed(1,id_RT);
         meanAccuracy(1,q) = length(tempdata2)/100;
         q = q+1;
 
@@ -89,9 +92,14 @@ figure(1);
 %for i = 1:3
 subplot(2,1,1);
 plot(congruence,meanRT(1,:)); hold on;
+errorbar(congruence,meanRT(1,:),std_RT(1,:));
+xlabel('Congruence');
+title('Individual RT');
 
 subplot(2,1,2);
 plot(congruence,meanAccuracy(1,:)); hold on;
+xlabel('Congruence');
+title('Individual Accuracy');
 
 result = [meanRT, meanAccuracy]
 %result = [accuracy, result];
