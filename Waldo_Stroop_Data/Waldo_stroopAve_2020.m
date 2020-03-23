@@ -1,6 +1,6 @@
-%% Waldo Stroop effect analysis code - PSC 2020 
+%% Waldo Stroop effect Individual aves - PSC 2020 
 % Get individual avearages
-% Conditions: 
+% Conditions: 0-> incongruent; 1-> congruent; 2-> front-view (baseline)
 % 
 clear all; close all; clc;
 
@@ -18,10 +18,8 @@ data = cell2mat(dataset(:,1:7));
 % column id - Stroop effect
 id_trial = 1;
 id_cong = 2;
-
-% id_dirG = 3;
-id_ndist = 3;
-% id_dirL = 4;
+id_dirG = 3;
+id_dirL = 4;
 id_RT = 5;
 id_correct = 6;
 id_block = 7;
@@ -65,6 +63,7 @@ for whichcong = congruence
         
         % outlier removal
         if remove_outliers > 0 
+            % check 
             %tempdata4 = tempdata2(abs(tempdata2(:,id_RT)) >= tempmean+remove_outliers*tempSD,:);
             tempdata3 = tempdata2(abs(tempdata2(:,id_RT)) < tempmean+remove_outliers*tempSD,:);
         end
@@ -78,10 +77,6 @@ for whichcong = congruence
         std_RT(1,q) = std_removed(1,id_RT);
         meanAccuracy(1,q) = length(tempdata2)/100;
         q = q+1;
-
-    %end
-
-
 
 end 
 
