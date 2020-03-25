@@ -12,7 +12,7 @@ rand('seed', sum(100 * clock));
   
 plinearize      = 0; % 1 or 0. Doesn't matter for projector.  
 blackout        = 0; % keep it to 0 
-scalefactor     = 1.552; 
+scalefactor     = 1.4214; % for a LAPTOP at 18in viewing distance. This is 2x the keyboard section of the laptop
 maxjitter       = 20;
 
 Eye_Tracking    = 0; % 1: track the eyes / 0: no eye tracking
@@ -21,7 +21,7 @@ keysetting      = -1; % -1 to query all keyboard devices
 
 %% save file parameters
  
-subject_id = 'Stp'; % ID length < 8 Char; St0 and St1 data are already stored
+subject_id = 'DT'; % ID length < 8 Char; St0 and St1 data are already stored
  
 data_file_name = strcat(subject_id,'_waldo_data.mat');
 edfFile = strcat(subject_id,'.edf');
@@ -398,8 +398,7 @@ toc;
 cd(data_folder)
 save(data_file_name,'data_cell')
 cd ..
-
-Eyelink('Shutdown');
+ ShowCursor;
 Screen('CloseAll');
 
 
