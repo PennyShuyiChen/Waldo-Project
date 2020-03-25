@@ -1,8 +1,8 @@
 %% Stroop effect task -> PennyShuyiChen03252020
 % EXPERIMENT FILE 
 % Check stroop data file - Waldo_Stroop_Data 
-% 
-        % EXPERIMENT CODE FILE 
+% Only 30 trials 
+        % PRACTICE CODE FILE 
         
 clear all; close all;
 
@@ -23,7 +23,7 @@ keysetting      = -1; % -1 to query all keyboard devices
  
 subject_id = 'DT'; % ID length < 8 Char; St0 and St1 data are already stored
  
-data_file_name = strcat(subject_id,'_waldo_data.mat');
+data_file_name = strcat(subject_id,'_practice_data.mat');
 edfFile = strcat(subject_id,'.edf');
 IsExist = exist(data_file_name, 'file');
  
@@ -103,7 +103,7 @@ g_pattern = [1 5]; % PSC 1-> L; 5->R;
 nFaces = 9; % -> nfaces -> change after testing PSC 
  
 % conditions and trials
-nrepeat = 50; % PSC -> even number   
+nrepeat = 5; % PSC -> even number   
  
 % make emat ->PSC add local direction 
 emat = expmat(congruence, g_pattern);
@@ -208,7 +208,7 @@ end
  
 textsize = 20;
 Screen('TextSize',w,textsize);
-welcometext = [int2str(total_trials),'  trials. Experiment: Wait 3secs to start.'];
+welcometext = [int2str(total_trials),'  trials. PRACTICE: wait 3secs to start'];
 tbound = Screen('TextBounds', w, welcometext);
 [textx, texty] = RectCenter(tbound);
 startx = cx - textx;
@@ -377,6 +377,7 @@ for seq = eseq
     end
 
 end
+
 
 if Eye_Tracking == 1
     Eyelink('closefile');                                                       
