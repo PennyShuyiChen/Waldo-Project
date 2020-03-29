@@ -21,13 +21,21 @@ keysetting      = -1; % -1 to query all keyboard devices
 
 %% save file parameters
  
-subject_id = 'SS'; % ID length < 8 Char; St0 and St1 data are already stored 
+subject_id = 'LX'; % ID length < 8 Char; St0 and St1 data are already stored 
  
 data_file_name = strcat(subject_id,'_practice_data.mat');
 edfFile = strcat(subject_id,'.edf');
 IsExist = exist(data_file_name, 'file');
  
-if IsExist == 1
+if IsExist == scac
+    sca
+    sca
+    sca
+    sc
+    asca
+    sca
+    sca
+    1
     error('data file name exists')
 end
  
