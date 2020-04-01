@@ -5,75 +5,73 @@ clc;clear all;close all;
 
 
 %% load data
-nsub = 39; % Posner and inverted data check 
-Data_pos;
-Data_accin;
+nsub = 8; % Data check stroop effect task  
+load stroopMAT.mat;
 
 %% Posner data column_ids 1-9
-accuracy_all =1; accuracy_in = 2; accuracy_v =3; accuracy_n = 4;
-RT_in = 5; RT_v = 6; RT_n = 7;
-index_in = 8; index_v = 9;
+subject =1; RT_inc = 2; RT_con =3; RT_fv = 4;
+Accur_inc = 5; Accur_con = 6; Accur_fv = 7;
+index_inc = 8; index_con = 9;
 
 % conditions & parameters
-coherence = [0 1];
-ndistractors =  [8];
-valid = [0 1 2];    
-valid_index = [0 1];
+%coherence = [0 1];
+%ndistractors =  [8];
+congruence = [0 1 2];    
+cong_index = [0 1];
 
 %group average plots:
-for i = 1:length(valid)
-    meanRT(1,i)= mean(data_pos(1:nsub,i+4));
-    condition_SEM(1,i) = std(data_pos(1:nsub,i+4))/sqrt(nsub);
-    meanAccuracy(1,i)= mean(data_pos(1:nsub,i+1));
-    accuracy_SEM(1,i) = std(data_pos(1:nsub,i+1))/sqrt(nsub);
+for i = 1:length(congruence)
+    meanRT(1,i)= mean(stroopMAT(1:nsub,i+1));
+    condition_SEM(1,i) = std(stroopMAT(1:nsub,i+1))/sqrt(nsub);
+    meanAccuracy(1,i)= mean(stroopMAT(1:nsub,i+4));
+    accuracy_SEM(1,i) = std(stroopMAT(1:nsub,i+4))/sqrt(nsub);
 end
 figure(1);
 subplot(2,3,1);
-errorbar(valid(1,:),meanRT(1,:),condition_SEM(1,:));hold on;
-plot(valid(1,:),meanRT(1,:));
+errorbar(congruence(1,:),meanRT(1,:),condition_SEM(1,:));hold on;
+plot(congruence(1,:),meanRT(1,:));
 title('RT');
-ylabel('Average Response Time (sec)');xlabel('Validity');
+ylabel('Average Response Time (sec)');xlabel('Congruence');
 hold on; grid on;
 %bar(valid,meanRT);
 
 subplot(2,3,4);
 for j = 1:nsub
-    plot(valid(1,:),data_pos(j,5:7)); hold on;grid on;
+    plot(congruence(1,:),stroopMAT(j,RT_inc:RT_fv)); hold on;grid on;
     title('individual RT curve');
 end
-ylabel('Average Response Time (sec)');xlabel('Validity');
+ylabel('Average Response Time (sec)');xlabel('Congruence');
 
 
 subplot(2,3,2);
-errorbar(valid(1,:),meanAccuracy(1,:),accuracy_SEM(1,:));hold on;
-plot(valid(1,:),meanAccuracy(1,:));
+errorbar(congruence(1,:),meanAccuracy(1,:),accuracy_SEM(1,:));hold on;
+plot(congruence(1,:),meanAccuracy(1,:));
 hold on; grid on; title('Accuracy');
-ylabel('Average Accuracy %');xlabel('Validity');
+ylabel('Average Accuracy %');xlabel('congruence');
 
 subplot(2,3,5);
 for j = 1:nsub
-    plot(valid(1,:),data_pos(j,2:4)); hold on;grid on;
+    plot(congruence(1,:),stroopMAT(j,Accur_inc:Accur_fv)); hold on;grid on;
     title('individual Accuracy curve');
 end 
-ylabel('Average Accuracy %');xlabel('Validity');
-
+ylabel('Average Accuracy %');xlabel('congruence');
 
 
 % benefit index curves
-for i = 1:length(valid_index)
-    meanIndex(1,i)= mean(data_pos(1:nsub,i+7));
-    index_SEM(1,i)= std(data_pos(1:nsub,i+7))/sqrt(nsub);
+for i = 1:length(cong_index)
+    meanIndex(1,i)= mean(stroopMAT(1:nsub,i+7));
+    index_SEM(1,i)= std(stroopMAT(1:nsub,i+7))/sqrt(nsub);
 end
 subplot(2,3,3);
-errorbar(valid_index(1,:),meanIndex(1,:),index_SEM(1,:));hold on;
-plot(valid_index(1,:),meanIndex(1,:));
+errorbar(cong_index(1,:),meanIndex(1,:),index_SEM(1,:));hold on;
+plot(cong_index(1,:),meanIndex(1,:));
 title('BI');
-ylabel('Average Benefit Index (sec)');xlabel('Validity');
+ylabel('Average Benefit Index (sec)');xlabel('Congruence');
 hold on; grid on;
 
 subplot(2,3,6);
 for j = 1:nsub
-    plot(valid_index(1,:),data_pos(j,8:9)); hold on;grid on;
+    plot(cong_index(1,:),stroopMAT(j,8:9)); hold on;grid on;
     title('individual Benifit Index curve');
 end
 ylabel('Average Benifit Index (sec)');xlabel('Validity');
