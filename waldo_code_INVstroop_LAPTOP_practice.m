@@ -6,7 +6,7 @@
         
 clear all; close all;
 
-%% --- basic settings 
+%% --- basic settings 0
  
 rand('seed', sum(100 * clock));
   
@@ -21,21 +21,14 @@ keysetting      = -1; % -1 to query all keyboard devices
 
 %% save file parameters
  
-subject_id = 'LX'; % ID length < 8 Char; St0 and St1 data are already stored 
+subject_id = 'invtest'; % ID length < 8 Char; St0 and St1 data are already stored 
  
-data_file_name = strcat(subject_id,'_practice_data.mat');
+data_file_name = strcat(subject_id,'_INV_practice_data.mat');
 edfFile = strcat(subject_id,'.edf');
 IsExist = exist(data_file_name, 'file');
  
-if IsExist == scac
-    sca
-    sca
-    sca
-    sc
-    asca
-    sca
-    sca
-    1
+if IsExist == 1
+    
     error('data file name exists')
 end
  
@@ -111,21 +104,29 @@ g_pattern = [1 5]; % PSC 1-> L; 5->R;
 nFaces = 9; % -> nfaces -> change after testing PSC 
  
 % conditions and trials
-nrepeat = 5; % PSC -> even number   
+nrepeat = 5; % PSC ->  number   
  
 % make emat ->PSC add local direction 
 emat = expmat(congruence, g_pattern);
 for i = 1:length(emat)
-    if emat(i,1)==0
+    if emat(i,1)==1
         if emat(i,2)==1
             emat(i,3)=5;
+            emat(i,4)=1;
         else 
             emat(i,3)=1;
+            emat(i,4)=5;
         end
-    elseif emat(i,1)==1
+    elseif emat(i,1)==0
         emat(i,3)=emat(i,2);
+        if emat(i,2)==1
+            emat(i,4)=5;
+        else
+            emat(i,4)=1;
+        end
     elseif emat(i,1)==2
         emat(i,3) = 3;
+        emat(i,4)= 3;
     end
 end
 
@@ -311,7 +312,7 @@ for seq = eseq
          
     %Draw Face Images to screen
     for ii = 1:9
-        Screen('DrawTexture',w,Faces(ii),[],coordF(ii,:));
+        Screen('DrawTexture',w,Faces(ii),[],coordF(ii,:),180);%% rotate the faces for 180deg
     end
         
     Screen('Flip',w);
@@ -356,12 +357,12 @@ for seq = eseq
     
     Response = response; % correct/incorrect 
     RT = responseT - stimonset;
-    
-    data_cell{seq, saveindex} = RT; % col 5
-    data_cell{seq, saveindex +1} = Response;% col 6
-    data_cell{seq, saveindex +2} = block; % col 7
-    data_cell{seq, saveindex +3} = stimonset; % col 8
-    data_cell{seq, saveindex +4} = responseT; % col 9
+    % data_cell{seq,5} = perceived gaze direction;
+    data_cell{seq, saveindex} = RT; % col 6
+    data_cell{seq, saveindex +1} = Response;% col 7
+    data_cell{seq, saveindex +2} = block; % col 8
+    data_cell{seq, saveindex +3} = stimonset; % col 9
+    data_cell{seq, saveindex +4} = responseT; % col 10
 
     % close Face images 
     Screen('Close',Faces);

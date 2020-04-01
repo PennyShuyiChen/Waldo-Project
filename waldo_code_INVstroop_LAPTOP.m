@@ -21,9 +21,9 @@ keysetting      = -1; % -1 to query all keyboard devices
 
 %% save file parameters
  
-subject_id = 'LX'; % ID length < 8 Char; St0 and St1 data are already stored
+subject_id = 'test'; % ID length < 8 Char; St0 and St1 data are already stored
  
-data_file_name = strcat(subject_id,'_waldo_data.mat'); 
+data_file_name = strcat(subject_id,'_INV_waldo_data.mat'); 
 edfFile = strcat(subject_id,'.edf');
 IsExist = exist(data_file_name, 'file');
  
@@ -103,21 +103,29 @@ g_pattern = [1 5]; % PSC 1-> L; 5->R;
 nFaces = 9; % -> nfaces -> change after testing PSC 
  
 % conditions and trials
-nrepeat = 50; % PSC -> even number   
+nrepeat = 50; % PSC -> number   
  
 % make emat ->PSC add local direction 
 emat = expmat(congruence, g_pattern);
 for i = 1:length(emat)
-    if emat(i,1)==0
+    if emat(i,1)==1
         if emat(i,2)==1
             emat(i,3)=5;
+            emat(i,4)=1;
         else 
             emat(i,3)=1;
+            emat(i,4)=5;
         end
-    elseif emat(i,1)==1
+    elseif emat(i,1)==0
         emat(i,3)=emat(i,2);
+        if emat(i,2)== 1
+            emat(i,4)=5;
+        else
+            emat(i,4)=1;
+        end
     elseif emat(i,1)==2
         emat(i,3) = 3;
+        emat(i,4)= 3;
     end
 end
 
@@ -303,7 +311,7 @@ for seq = eseq
          
     %Draw Face Images to screen
     for ii = 1:9
-        Screen('DrawTexture',w,Faces(ii),[],coordF(ii,:));
+        Screen('DrawTexture',w,Faces(ii),[],coordF(ii,:),180);%% rotate the faces for 180deg
     end
         
     Screen('Flip',w);
