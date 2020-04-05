@@ -9,7 +9,7 @@ whichsub = 1;
 remove_outliers= 3; % 0: no / other numbers: criterion (remove_outliers*SD)
 
 %dataset = load(['St' num2str(whichsub) '_waldo_data.mat']);
-dataset = load(['MT_waldo_data.mat']);
+dataset = load(['LX_INV_waldo_data.mat']);
 dataset = dataset.data_cell;
 
 % columns: [1trial 2coherence 3ndist 4RT 5meanD2target 6correct]
