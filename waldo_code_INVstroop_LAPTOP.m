@@ -21,7 +21,7 @@ keysetting      = -1; % -1 to query all keyboard devices
 
 %% save file parameters
  
-subject_id = 'XW'; % ID length < 8 Char; St0 and St1 data are already stored
+subject_id = 'TZ'; % ID length < 8 Char; St0 and St1 data are already stored
  
 data_file_name = strcat(subject_id,'_INV_waldo_data.mat'); 
 edfFile = strcat(subject_id,'.edf');

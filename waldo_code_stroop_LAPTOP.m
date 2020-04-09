@@ -2,8 +2,7 @@
 % EXPERIMENT FILE 
 % Check stroop data file - Waldo_Stroop_Data 
 % 
-        % EXPERIMENT CODE FILE 
-        
+        % EXPERIMENT CODE FIQ1       
 clear all; close all;
 
 %% --- basic settings 
@@ -19,9 +18,10 @@ Eye_Tracking    = 0; % 1: track the eyes / 0: no eye tracking
 dummymode       = 0; % keep this to 0 the whole time 
 keysetting      = -1; % -1 to query all keyboard devices 
 
+
 %% save file parameters
  
-subject_id = 'XW'; % ID length < 8 Char; St0 and St1 data are already stored
+subject_id = 'TZ'; % ID length < 8 Char; St0 and St1 data are already stored
  
 data_file_name = strcat(subject_id,'_waldo_data.mat'); 
 edfFile = strcat(subject_id,'.edf');
