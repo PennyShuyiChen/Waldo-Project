@@ -2,7 +2,7 @@
 clear all;
 close all;
 % Created by PSC 2018 summer 
-whichsub = 16;
+whichsub = 37;
 remove_outliers = 3; % 0: no / other numbers: criterion (remove_outliers*SD)
 
 dataset = load(['waldo_' num2str(whichsub) '_waldo_data.mat']);
@@ -43,11 +43,12 @@ p = 1;
 checkdata= data(data(:,id_block)==1,:);
 data = data(data(:,id_block)>1,:);
 
+%% Data calculation 
 for whichcoh = coherence
     
     % select data in a coherence condition 
     tempdata1 = data(data(:,id_coh)==whichcoh,:);
-
+    accuracy_level = 0;
     q = 1;
     for whichndist = ndistractors
         
@@ -56,7 +57,7 @@ for whichcoh = coherence
         
         % select only the correct trials
         tempdata2 = tempdata2(tempdata2(:,id_correct)==1,:);
-        
+        accuracy_level = length(tempdata2)/40;
         meandata = mean(tempdata2);
         SDdata = std(tempdata2);
         
@@ -73,7 +74,7 @@ for whichcoh = coherence
         
         % store
         meanRT(p,q) = meandata_removed(1,id_RT);
-        
+        meanAccuracy(p,q) = accuracy_level;
         q = q+1;
 
     end
