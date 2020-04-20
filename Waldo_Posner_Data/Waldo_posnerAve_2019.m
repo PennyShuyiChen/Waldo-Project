@@ -3,7 +3,7 @@
 clc;clear all;
 close all;
 %Choose available subject 
-whichsub = 21;
+whichsub = 39;
 remove_outliers = 9; % 0: no / other numbers: criterion (remove_outliers*SD)
 
 dataset = load(['Pos' num2str(whichsub) '_waldo_data.mat']);
@@ -149,10 +149,10 @@ acc_count = [count_in, count_v, count_n];
     
     check_acc = sum(acc_count);
     if count == check_acc
-        figure(1);
+        %figure(1);
         
-        subplot(2,1,1);bar(valid,meanRT(1,:));title('mean RT'); hold on;
-        subplot(2,1,2);bar(valid,accuracy(1,2:4)); title('accuracy');
+        %subplot(2,1,1);bar(valid,meanRT(1,:));title('mean RT'); hold on;
+       % subplot(2,1,2);bar(valid,accuracy(1,2:4)); title('accuracy');
         meanRT
         accuracy
         result =[accuracy,meanRT ];   

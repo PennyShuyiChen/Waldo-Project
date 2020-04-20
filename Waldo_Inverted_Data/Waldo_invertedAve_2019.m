@@ -3,7 +3,7 @@
 
 clc;clear all;close all;
 % Choose avialable subject
-whichsub = 38;
+whichsub = 13;
 remove_outliers= 3; % 0: no / other numbers: criterion (remove_outliers*SD)
 
 dataset = load(['In' num2str(whichsub) '_waldo_data.mat']);
@@ -85,9 +85,9 @@ right_count=data(data(:,id_correct)==1,id_correct);
 accuracy = sum(right_count)/length(data);
 
 for i = 1:3
-    plot(ndistractors,meanRT(i,:)); hold on;
+    %plot(ndistractors,meanRT(i,:)); hold on;
 end
-legend('0','0.5','1');
+%legend('0','0.5','1');
 
 result(1,:) = [meanRT(1,:) meanRT(2,:) meanRT(3,:)]
 result = [accuracy, result];
