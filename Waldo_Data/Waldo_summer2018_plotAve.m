@@ -105,3 +105,25 @@ legend('0','0.5','1');
       end 
   end 
     
+%% Accuracy Histoograms
+%% Posener Accuracy:
+load('Original_acc.mat');
+acc_ave = Original_acc(:,1); sd_ave = mean(acc_ave)-3*std(acc_ave);
+
+figure(1);
+hist(acc_ave); title('Original Task - Averaged accuracy');
+line([mean(acc_ave), mean(acc_ave)], ylim, 'LineWidth', 2, 'Color', 'b');
+line([sd_ave, sd_ave], ylim, 'LineWidth', 2, 'Color', 'r');
+
+
+figure(2);
+title('Accuracy across Conditions');
+for i = 1:9
+    acc_con_ave = Original_acc(:,i+1); sd_con_ave = mean(acc_con_ave)-3*std(acc_con_ave);
+    subplot(3,3,i); hist(acc_con_ave); 
+    line([mean(acc_con_ave), mean(acc_con_ave)], ylim, 'LineWidth', 2, 'Color', 'b');
+    line([sd_con_ave, sd_con_ave], ylim, 'LineWidth', 2, 'Color', 'r');
+    hold on;
+end 
+
+
