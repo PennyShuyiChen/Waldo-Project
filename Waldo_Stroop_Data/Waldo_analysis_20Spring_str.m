@@ -5,7 +5,7 @@ clc;clear all;close all;
 
 
 %% load data
-nsub = 8; % Data check stroop effect task  
+nsub = 9; % Data check stroop effect task  
 load stroopMAT.mat;
 
 %% Posner data column_ids 1-9
