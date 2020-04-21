@@ -106,7 +106,7 @@ legend('0','0.5','1');
   end 
     
 %% Accuracy Histoograms
-%% Posener Accuracy:
+
 load('Original_acc.mat');
 acc_ave = Original_acc(:,1); sd_ave = mean(acc_ave)-3*std(acc_ave);
 
