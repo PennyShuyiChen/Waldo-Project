@@ -27,15 +27,15 @@ for i = 1:length(congruence)
     accuracy_SEM(1,i) = std(stroopMAT(1:nsub,i+4))/sqrt(nsub);
 end
 figure(1);
-subplot(2,3,1);
-errorbar(congruence(1,:),meanRT(1,:),condition_SEM(1,:));hold on;
-plot(congruence(1,:),meanRT(1,:));
-title('RT');
-ylabel('Average Response Time (sec)');xlabel('Congruence');
-hold on; grid on;
+% subplot(2,3,1);
+% errorbar(congruence(1,:),meanRT(1,:),condition_SEM(1,:));hold on;
+% plot(congruence(1,:),meanRT(1,:));
+% title('RT');
+% ylabel('Average Response Time (sec)');xlabel('Congruence');
+% hold on; grid on;
 %bar(valid,meanRT);
 
-subplot(2,3,4);
+subplot(1,3,1);
 for j = 1:nsub
     plot(congruence(1,:),stroopMAT(j,RT_inc:RT_fv)); hold on;grid on;
     title('individual RT curve');
@@ -43,13 +43,13 @@ end
 ylabel('Average Response Time (sec)');xlabel('Congruence');
 
 
-subplot(2,3,2);
-errorbar(congruence(1,:),meanAccuracy(1,:),accuracy_SEM(1,:));hold on;
-plot(congruence(1,:),meanAccuracy(1,:));
-hold on; grid on; title('Accuracy');
-ylabel('Average Accuracy %');xlabel('congruence');
+% subplot(2,3,2);
+% errorbar(congruence(1,:),meanAccuracy(1,:),accuracy_SEM(1,:));hold on;
+% plot(congruence(1,:),meanAccuracy(1,:));
+% hold on; grid on; title('Accuracy');
+% ylabel('Average Accuracy %');xlabel('congruence');
 
-subplot(2,3,5);
+subplot(1,3,2);
 for j = 1:nsub
     plot(congruence(1,:),stroopMAT(j,Accur_inc:Accur_fv)); hold on;grid on;
     title('individual Accuracy curve');
@@ -62,14 +62,14 @@ for i = 1:length(cong_index)
     meanIndex(1,i)= mean(stroopMAT(1:nsub,i+7));
     index_SEM(1,i)= std(stroopMAT(1:nsub,i+7))/sqrt(nsub);
 end
-subplot(2,3,3);
-errorbar(cong_index(1,:),meanIndex(1,:),index_SEM(1,:));hold on;
-plot(cong_index(1,:),meanIndex(1,:));
-title('BI');
-ylabel('Average Benefit Index (sec)');xlabel('Congruence');
-hold on; grid on;
+% subplot(2,3,3);
+% errorbar(cong_index(1,:),meanIndex(1,:),index_SEM(1,:));hold on;
+% plot(cong_index(1,:),meanIndex(1,:));
+% title('BI');
+% ylabel('Average Benefit Index (sec)');xlabel('Congruence');
+% hold on; grid on;
 
-subplot(2,3,6);
+subplot(1,3,3);
 for j = 1:nsub
     plot(cong_index(1,:),stroopMAT(j,8:9)); hold on;grid on;
     title('individual Benifit Index curve');
